@@ -11,7 +11,7 @@ Products::Products(string filename) {
 	index_price = 0;
 	file.open(filename.c_str());
 	while (file >> oneWord && aux <= array_size*2) {
-		cout<<"word: " << oneWord << endl;
+		//cout<<"word: " << oneWord << endl;
 		if (aux % 2 == 0) {
 			name[index_name] = oneWord;
 			index_name++;

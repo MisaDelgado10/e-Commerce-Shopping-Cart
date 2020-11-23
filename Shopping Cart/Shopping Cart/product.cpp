@@ -46,13 +46,10 @@ bool operator!= (const Product& product1, const Product& product2){ //Muestra el
 }
 bool operator!= (const Product& product1, const string& product_name) { //Muestra el inicio y el final
 
-	if (product1.name != product_name) {
+	if (product1.name != product_name) 
 		return true;//Diferentes
-	}
-	else {
-		return false; //Son iguales
-
-	}
+	else
+		return false;
 }
 std::ostream& operator<< (std::ostream& output, Product& product) { //Muestra nombre y precio del producto
 

@@ -1,30 +1,30 @@
-#include "Order.h"
+#include "order.h"
 
-Order::Order(Product& product, int quantity) {
+order::order(Product& product, int quantity) {
 	this->product = &product;
 	this->quantity = quantity;
 	if (quantity == 0)
 		this->quantity = 1;
 }
-void Order::operator +=(int const& amt) {
+void order::operator +=(int const& amt) {
 	this->quantity += amt;
 }
-float Order::cost() {
+float order::cost() {
 	return quantity * product->price;
 }
-bool operator== (const Order& order1, const Order& order2) { //Muestra el inicio y el final
+bool operator== (const order& order1, const order& order2) { //Muestra el inicio y el final
 	if (order1.product == order2.product)
 		return true;
 	else
 		return false;
 }
-bool operator!= (const Order& order1, const Order& order2) { //Muestra el inicio y el final
+bool operator!= (const order& order1, const order& order2) { //Muestra el inicio y el final
 	if (order1.product != order2.product)
 		return true;
 	else
 		return false;
 }
-std::ostream& operator<< (std::ostream& output, Order& order) { //Muestra nombre y precio del producto
+std::ostream& operator<< (std::ostream& output, order& order) { //Muestra nombre y precio del producto
 	
 	cout << "Esta orden contiene:\n";
 	output << *order.product;

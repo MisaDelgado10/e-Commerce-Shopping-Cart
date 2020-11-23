@@ -4,14 +4,13 @@
 #include <iostream>
 #include "product.h"
 #include "Products.h"
-#include "Order.h"
-
+#include "order.h"
+#include "ShoppingCart.h"
 
 int main()
 {
 	//Product product1("Muffin",100);
 	Products products("products.dat");
-	
 	//cout << product1.name << endl;
 	//cout << product1.price << endl;
 
@@ -42,13 +41,13 @@ int main()
 	Product product2("Pastel", 100.50);
 	Product product3("Muffins", 70.50);
 
-	Order order1(products[0], 10);
-	Order order2(products[1], 10);
+	order order1(products[0], 10);
+	order order2(products[1], 10);
 	order2 += 10;
 	cout <<"Orden 1"<< order1 << endl;
 	cout << "Orden 2" << order2 << endl;
 
-	//Uso operador == para ver si las ordenes son iguales porque tienen los mismos productos
+	/*Uso operador == para ver si las ordenes son iguales porque tienen los mismos productos
 	if (order1 == order2)
 		cout << "Sí son iguales";
 	else
@@ -56,8 +55,14 @@ int main()
 	//Uso operador != para ver si las ordenes son iguales porque tienen los mismos productos
 	if (order1 != order2)
 		cout << "Sí son diferentes";
+		*/
 
 	//Uso el método de cost()
-	cout << "El costo de la orden 1 es: " << order1.cost();
+	cout << "El costo de la orden 1 es: " << order1.cost()<<endl;
 
+
+	ShoppingCart shoppingList("Misa");
+	shoppingList.add_to_cart(order1);
+	shoppingList.add_to_cart(order2);
+	cout << shoppingList << endl;
 }

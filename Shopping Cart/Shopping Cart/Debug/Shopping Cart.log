@@ -1,4 +1,5 @@
-﻿  order.cpp
+﻿  Shopping Cart.cpp
   ShoppingCart.cpp
   Generando código...
-  Shopping Cart.vcxproj -> D:\5to semestre online\Data Structures\Act Certificacion\Shopping Cart\Debug\Shopping Cart.exe
+ShoppingCart.obj : error LNK2005: ya se definió "class std::basic_ostream<char,struct std::char_traits<char> > & __cdecl operator<<(class std::basic_ostream<char,struct std::char_traits<char> > &,class ShoppingCart)" (??6@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AAV01@VShoppingCart@@@Z) en Shopping Cart.obj
+D:\5to semestre online\Data Structures\Act Certificacion\Shopping Cart\Debug\Shopping Cart.exe : fatal error LNK1169: se encontraron uno o más símbolos definidos simultáneamente
