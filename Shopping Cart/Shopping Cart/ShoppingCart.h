@@ -122,10 +122,14 @@ public:
 	}
 };
 ostream& operator<< (ostream& salida, ShoppingCart const& p) {
-	salida << "==================================================\n";
-	salida << "\t\tCar: " << p.name << endl;
+	salida << "Carrito de : " << p.name << endl;
 	ShoppingCart temp = p;
-	temp.despNodes(temp.getHead());
-	salida << endl;
+
+	if(temp.getHead() == NULL)
+		salida<<"No hay elementos en tu carrito\n";
+	else {
+		temp.despNodes(temp.getHead());
+		salida << endl;
+	}
 	return salida;
 }

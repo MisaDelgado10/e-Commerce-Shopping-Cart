@@ -1,7 +1,7 @@
-#include "ShoppingCart.h"
+/*#include "ShoppingCart.h"
 #include <string>
 #include <iostream>
-/*
+
 ShoppingCart::ShoppingCart(string name) {
 	_head = NULL;
 	this->name = name;

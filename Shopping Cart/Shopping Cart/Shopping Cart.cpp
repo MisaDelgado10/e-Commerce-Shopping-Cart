@@ -38,14 +38,14 @@ int main()
 	//cout << "El tamaño del arreglo es: " << products.products_size()<<endl;
 
 	//Pruebo que funcione la clase Order, la cual recibe por parámetro un producto y una cantidad
-	Product product2("Pastel", 100.50);
-	Product product3("Muffins", 70.50);
+	//Product product2("Pastel", 100.50);
+	//Product product3("Muffins", 70.50);
 
-	order order1(products[0], 10);
-	order order2(products[1], 10);
-	order2 += 10;
-	cout <<"Orden 1"<< order1 << endl;
-	cout << "Orden 2" << order2 << endl;
+	order order1(products[1], 10);
+	order order2(products[1], -20);
+
+	//cout <<"Orden 1"<< order1 << endl;
+	//cout << "Orden 2" << order2 << endl;
 
 	/*Uso operador == para ver si las ordenes son iguales porque tienen los mismos productos
 	if (order1 == order2)
@@ -64,6 +64,6 @@ int main()
 	ShoppingCart shoppingList("Misa");
 	shoppingList.add_to_cart(order1);
 	shoppingList.add_to_cart(order2);
-	cout << "El costo de toda la lista es: " << shoppingList.cost();
+	//cout << "El costo de toda la lista es: " << shoppingList.cost() << endl;
 	cout << shoppingList << endl;
 }
