@@ -64,5 +64,6 @@ int main()
 	ShoppingCart shoppingList("Misa");
 	shoppingList.add_to_cart(order1);
 	shoppingList.add_to_cart(order2);
+	cout << "El costo de toda la lista es: " << shoppingList.cost();
 	cout << shoppingList << endl;
 }

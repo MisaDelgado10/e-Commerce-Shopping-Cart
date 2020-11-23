@@ -7,7 +7,7 @@ struct order
 	int quantity;
 
 	order(Product& product, int quantity);
-	float cost();
+	price_t cost();
 
 	void operator += (int const& amt); //sobrecarga operador +=, manipula la cantidad de la orden
 	friend bool operator== (const order& order1, const order& order2);//Product vs Product

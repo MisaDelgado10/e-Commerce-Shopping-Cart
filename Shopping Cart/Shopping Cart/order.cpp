@@ -9,7 +9,7 @@ order::order(Product& product, int quantity) {
 void order::operator +=(int const& amt) {
 	this->quantity += amt;
 }
-float order::cost() {
+price_t order::cost() {
 	return quantity * product->price;
 }
 bool operator== (const order& order1, const order& order2) { //Muestra el inicio y el final
