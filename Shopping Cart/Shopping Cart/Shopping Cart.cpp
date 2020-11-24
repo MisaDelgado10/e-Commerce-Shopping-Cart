@@ -1,69 +1,91 @@
-// Shopping Cart.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
+// Sean Bufano
 
 #include <iostream>
-#include "product.h"
-#include "Products.h"
-#include "order.h"
-#include "ShoppingCart.h"
+#include <istream>
+#include <fstream>
+#include <stdlib.h>
+#include "Store.h"
 
-int main()
-{
-	//Product product1("Muffin",100);
-	Products products("products.dat");
-	//cout << product1.name << endl;
-	//cout << product1.price << endl;
-
-	//Product product2("Chocolate", -1); //Si asigno un num negativo a precio le pongo 0 y lanzo msj en pantalla
-	//cout << product2.name << endl;
-	//cout << product2.price << endl;
-
-	/*
-	//Operador ==
-	if (product1 != "Muffin")
-		cout << "Sí son diferentes\n";
-	else
-		cout << "Son iguales\n";
-	//Operador !=
-	if (product1 != "Muffin")
-		cout << "Sí son diferentes\n";
-	else
-		cout << "Son iguales\n";
-
-	cout << "Los datos del producto1 son: " << product1<<endl;
-	*/
-	
-	//products.printProducts();
-	//cout << "El primer producto es: " << products[0] << endl;
-	//cout << "El tamaño del arreglo es: " << products.products_size()<<endl;
-
-	//Pruebo que funcione la clase Order, la cual recibe por parámetro un producto y una cantidad
-	//Product product2("Pastel", 100.50);
-	//Product product3("Muffins", 70.50);
-
-	order order1(products[1], 10);
-	order order2(products[1], -20);
-
-	//cout <<"Orden 1"<< order1 << endl;
-	//cout << "Orden 2" << order2 << endl;
-
-	/*Uso operador == para ver si las ordenes son iguales porque tienen los mismos productos
-	if (order1 == order2)
-		cout << "Sí son iguales";
-	else
-		cout << "Son diferentes";
-	//Uso operador != para ver si las ordenes son iguales porque tienen los mismos productos
-	if (order1 != order2)
-		cout << "Sí son diferentes";
-		*/
-
-	//Uso el método de cost()
-	cout << "El costo de la orden 1 es: " << order1.cost()<<endl;
+#define USAGE  argv[0]
 
 
-	ShoppingCart shoppingList("Misa");
-	shoppingList.add_to_cart(order1);
-	shoppingList.add_to_cart(order2);
-	//cout << "El costo de toda la lista es: " << shoppingList.cost() << endl;
-	cout << shoppingList << endl;
+int main(int  argc, char* argv[]) {
+
+	cout << "Welcome to our online store!" << endl;
+
+	if (argc > 1) {
+		cerr << USAGE << endl;
+		return  EXIT_FAILURE;
+	}
+
+	string  file_name;
+	cerr << "Enter products file name:  " << flush;
+	cin >> file_name;
+
+	Store  store(file_name);
+
+	if (store.is_open()) {
+
+		istream* in;
+		cerr << "Enter transactions file name (\"-\" for standard input):  " <<
+			flush;
+		cin >> file_name;
+		if (file_name == "-") {
+			in = &cin;
+		}
+		else {
+			if ((in = new  ifstream(file_name.c_str()))->bad()) {
+				cerr << "ERROR:  Failed to open file...aborting." << endl;
+				return  EXIT_FAILURE;
+			}
+		}
+
+		string  customer_name;
+		string  command;
+		int  quantity;
+		string  product_name;
+		string  junk;  // to clear a junk line
+
+		while ((*in >> customer_name >> command).good()) {
+
+			if (command == Store::SHOWCART || command == Store::CHECKOUT) {
+				store.process_cart(customer_name, command);
+			}
+			else
+				if (command == Store::BUYS || command == Store::RETURNS) {
+					if ((*in >> quantity >> product_name).good()) {
+						store.process_cart(customer_name, command, quantity, product_name);
+					}
+					else {
+						if (!in->bad()) {
+							cerr << "Input error...skipping line" << endl;
+							in->clear();
+							*in >> junk;
+						}
+						else {
+							cerr << "Input error...cannot recover...aborting." << endl;
+							return  EXIT_FAILURE;
+						}
+					}
+				}
+				else {
+					cerr << "Illegal command \"" << command <<
+						"\"...skipping line." << endl;
+					*in >> junk;
+				}
+		}
+
+		if (in->eof()) {
+			store.close(cout);
+			return  EXIT_SUCCESS;
+		}
+		else {
+			cerr << "Input error...cannot recover...aborting." << endl;
+			return  EXIT_FAILURE;
+		}
+	}
+	else {
+		cerr << "Store remains empty...exiting." << endl;
+		return  EXIT_FAILURE;
+	}
 }

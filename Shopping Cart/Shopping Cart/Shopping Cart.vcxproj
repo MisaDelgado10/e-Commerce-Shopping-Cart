@@ -152,12 +152,14 @@
     <ClCompile Include="Products.cpp" />
     <ClCompile Include="Shopping Cart.cpp" />
     <ClCompile Include="ShoppingCart.cpp" />
+    <ClCompile Include="Store.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="order.h" />
     <ClInclude Include="product.h" />
     <ClInclude Include="Products.h" />
     <ClInclude Include="ShoppingCart.h" />
+    <ClInclude Include="Store.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

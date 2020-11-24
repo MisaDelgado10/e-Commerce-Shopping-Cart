@@ -1,7 +1,5 @@
 #pragma once
 #include <iostream>
-#include <tuple>
-
 using namespace std;
 typedef float price_t;
 

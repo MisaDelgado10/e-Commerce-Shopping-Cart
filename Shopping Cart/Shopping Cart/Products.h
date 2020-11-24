@@ -20,8 +20,9 @@ private:
 public:
 	Products(string filename);
 	void printProducts();
-	static int products_size();
+	int products_size();
 
+	Product* getProductsArray();
 	Product& operator[](int);
 
 };
