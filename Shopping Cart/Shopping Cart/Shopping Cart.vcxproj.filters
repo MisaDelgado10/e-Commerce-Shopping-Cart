@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Shopping Cart.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="product.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -27,10 +24,10 @@
     <ClCompile Include="order.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="ShoppingCart.cpp">
+    <ClCompile Include="Store.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Store.cpp">
+    <ClCompile Include="go_shopping.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
